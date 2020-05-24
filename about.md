@@ -5,8 +5,8 @@ permalink: /about/
 ---
 
 I am one of these software developers who look back with a bit of nostalgia at the products like 
-Turbo Pascal, Borland Turbo C, Turbo Assembler. Being in the business for a quite long time gave my 
-a chance to changed my professional mindset several times along the way. 
+Turbo Pascal, Borland Turbo C, Turbo Assembler. Being in the business for a quite long time has given me 
+a chance to change my professional mindset several times along the way. 
 
 Like in any other profession also in software engineering we have heroes we learn from. 
 So amongst my are: Martin Fowler, Kent Beck, Robert C. Martin, Joshua Bloch, Adam Bien and Eric Evans.     
