@@ -1,99 +1,60 @@
 ---
 layout: post
-title: VerneMQ with WebHooks 
+title: VerneMQ Auth with Webhooks 
 ---
 
+The post shows how to implement your own authentication and 
+authorization extension for VerneMQ MQTT broker by using **Webhooks**.
 
-### Start services via `docker-compose.yml`:
+### Docker Service 
 
-<script src="https://gist.github.com/ppretki/f09499b78610c2b2b83622f560fde374.js?file=docker_compose_vernemq_auth_redis.yml"></script>
+A complete description of VerneMQ's plugin and **Webhooks** can be found [here](https://docs.vernemq.com/plugindevelopment/webhookplugins).
+We can enable webhooks plugin and define some first endpoints by using the following 
+`docker-compose.yml` configuration:
 
-### Configure VerneMQ auth data
+<script src="https://gist.github.com/ppretki/f09499b78610c2b2b83622f560fde374.js?file=docker-compose-vernemq-webshooks.yml"></script>
 
-{% highlight shell %}
-vernemq@e17b6197beba:~$ vmq-admin webhooks cache show
-+-------+------------------------------------------+----------------+-----+
-| stat  |                 endpoint                 |      hook      |value|
-+-------+------------------------------------------+----------------+-----+
-|misses |http://192.168.1.13:10000/auth_on_register|auth_on_register|  2  |
-| hits  |http://192.168.1.13:10000/auth_on_register|auth_on_register|  3  |
-|entries|http://192.168.1.13:10000/auth_on_register|auth_on_register|  1  |
-+-------+------------------------------------------+----------------+-----+
-{% endhighlight %}
+It is important to note that endpoints for hooks `auth_on_register` (line 14), `auth_on_subscribe` (line 16) and `auth_on_publish` (line 18) 
+need to be defined using unsecured http protocol and must point at services accessible from the docker's container.
+In this simple example we can use `.env` file to define the required parameters:
+
+<script src="https://gist.github.com/ppretki/f09499b78610c2b2b83622f560fde374.js?file=docker-compose-vernemq-webshooks.env"></script>
+
+### Webhooks Service
+
+The best thing about VerneMQ's Webhhook plugin is that we can implement endpoints in any technology 
+we feel comfortable with. We can use for example [sparkjava](http://sparkjava.com/):
+    
+<script src="https://gist.github.com/ppretki/f09499b78610c2b2b83622f560fde374.js?file=VerneMQWebHooks.java"></script>
 
 
+### Test 
 
-VerneMQ treats [Redis](https://redis.io/) as a simple key-value storage for both authentication 
-and authorization data. Redis entries take the following form:
+The simples way to test above setup is to use browser-based MQTT client available here 
 
-Key: 
-{% highlight shell %}
-[mountpoint, client_id, unername]
-{% endhighlight %}
-  
-Value:
-{% highlight shell %}
-{
-  "passhash": BCRYPT PASSWORD HASH,
-  "publish_acl": [
-    {
-      "pattern": TOPIC PATTERN
-    }
-  ],
-  "subscribe_acl": [
-    {
-      "pattern": TOPIC PATTERN
-    }
-  ]
-}
-{% endhighlight %} 
+[Online MQTT Client: (MQTT over ws)](http://www.hivemq.com/demos/websocket-client/)
 
-[Bcrypt](https://en.wikipedia.org/wiki/Bcrypt) password hash can be easily computed using e.g. [Online Bcrypt hash generator](https://8gwifi.org/bccrypt.jsp)
- 
-~~~
-Brypt(pass='123',round=12) = $2a$12$uiPXR.maWj5J7Uo9mhjuMe6r.c8b1/sZtEzWV7ptkMnIomFy3l.s2
-~~~   
-
-Insert auth data into Redis:
-
-<script src="https://gist.github.com/ppretki/f09499b78610c2b2b83622f560fde374.js?file=set_auth_data_in_redis.sh"></script>
-
-### Test using [Online MQTT Client: (MQTT over ws)](http://www.hivemq.com/demos/websocket-client/)
+Using the tool we can provide credentials and other mandatory connection's parameters
 
 ![Connect Over Web Sockets](/images/mqtt_over_ws_connect_config.png)
 
+Operations like `connect,subscribe,publish` executed in the order produce the following logs: 
 
-### Important:
-- **ACL data** for a specific client are read from Redis once - during authentication (MQTT `CONNECT` command), and stay cached until the client disconnects.
-- **ACL pattern** may contains template variables: %m (mountpoint), %u (username), and %c (client id) 
+<script src="https://gist.github.com/ppretki/f09499b78610c2b2b83622f560fde374.js?file=vernemq_webhook_endpoints.info"></script>
 
+and leave the following trace in the broker:
 
-
-
-
-{% highlight shell %}
-vernemq@e17b6197beba:~$ vmq-admin webhooks cache show
-+-------+------------------------------------------+----------------+-----+
-| stat  |                 endpoint                 |      hook      |value|
-+-------+------------------------------------------+----------------+-----+
-|misses |http://192.168.1.13:10000/auth_on_register|auth_on_register|  2  |
-| hits  |http://192.168.1.13:10000/auth_on_register|auth_on_register|  3  |
-|entries|http://192.168.1.13:10000/auth_on_register|auth_on_register|  1  |
-+-------+------------------------------------------+----------------+-----+
-{% endhighlight %}
+<script src="https://gist.github.com/ppretki/f09499b78610c2b2b83622f560fde374.js?file=vernemq_webhook_client.trace"></script>
 
 ### Useful commands
 
-- show all plugins:
 {% highlight shell %}
-vmq-admin trace client client-id=test-client // trace mqtt client
-vmq-admin plugin show // shows all plugins
-vmq-admin webhooks show // show registered endpoints
+vmq-admin trace client client-id=test-client
+vmq-admin plugin show
+vmq-admin webhooks show
 vmq-admin webhooks cache show
 {% endhighlight %}
 
 
-### Useful tools
-- [Online Bcrypt hash generator](https://8gwifi.org/bccrypt.jsp)
-- [Online MQTT Client: (MQTT over ws)](http://www.hivemq.com/demos/websocket-client/)
-- [Redis authentication and authorization](https://docs.vernemq.com/configuration/db-auth#redis)
+### Useful links
+- [VerneMQ Webhooks Plugin](https://docs.vernemq.com/plugindevelopment/webhookplugins)

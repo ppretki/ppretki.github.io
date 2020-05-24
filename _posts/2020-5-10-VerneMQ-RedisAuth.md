@@ -17,36 +17,23 @@ in a docker-compose file:
 ### VerneMQ Auth Data
 
 When the broker receives `CONNECT` command from external clients it tries to authenticate them 
-on the basis of data available in Redis. VerneMQ assume following structure for the authentication data:   
+on the basis of data available in Redis. Lets insert the data by executing following commands:    
 
-
-* Redis Key
-
-<script src="https://gist.github.com/ppretki/f09499b78610c2b2b83622f560fde374.js?file=auth_data_redis_key_pattern.data"></script>
-
-* Redis Value
-
-<script src="https://gist.github.com/ppretki/f09499b78610c2b2b83622f560fde374.js?file=auth_data_redis_value_pattern.data"></script>
-
-
-where:
-
-* `mountpoint`, `client id`, `username` - credentials  
-
-* `passhas` - Bcrypted authentication password,
+<script src="https://gist.github.com/ppretki/f09499b78610c2b2b83622f560fde374.js?file=set_auth_data_in_redis.sh"></script>
 
 [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt) password hash can be easily computed using e.g. [Online Bcrypt hash generator](https://8gwifi.org/bccrypt.jsp) 
 ~~~
 Brypt(pass='123',round=12) = $2a$12$uiPXR.maWj5J7Uo9mhjuMe6r.c8b1/sZtEzWV7ptkMnIomFy3l.s2
 ~~~   
 
-* `Publish ACL`, `Subscribe ACL` - complete description can found at [VerneMQ](https://docs.vernemq.com/configuration/db-auth)
 
-### Insert Auth Data into Redis
+### Test 
 
-<script src="https://gist.github.com/ppretki/f09499b78610c2b2b83622f560fde374.js?file=set_auth_data_in_redis.sh"></script>
+The simples way to test above configuration is to use browser-based MQTT client available here 
 
-### Test using [Online MQTT Client: (MQTT over ws)](http://www.hivemq.com/demos/websocket-client/)
+[Online MQTT Client: (MQTT over ws)](http://www.hivemq.com/demos/websocket-client/)
+
+Using the tool we can provide credentials (previously saved in Redis) and other mandatory connection parameters
 
 ![Connect Over Web Sockets](/images/mqtt_over_ws_connect_config.png)
 
