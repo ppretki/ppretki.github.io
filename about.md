@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 I am one of these software developers who look back with a bit of nostalgia at the products like 
-Turbo Pascal, Borland Turbo C, Turbo Assembler. Being in the business for a quite long time has given me 
+Turbo Pascal, Borland Turbo C, Turbo Assembler. Being in the business for a quite some time has given me 
 a chance to change my professional mindset several times along the way. 
 
 Like in any other profession also in software engineering we have heroes we learn from. 
@@ -19,7 +19,7 @@ taking a step back, being sceptical about what we have just done and writing sli
 
 ## About the blog
 
-It is not a blog. It is rather kind of engineering notebook in which I can preserve information 
+It is not really a blog. It is rather kind of engineering notebook in which I can preserve information 
 that usually after several days becomes a bit blurry and after another several weeks completely disappears 
 from my head.     
 

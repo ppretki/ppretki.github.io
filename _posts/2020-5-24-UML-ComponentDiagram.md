@@ -3,6 +3,8 @@ layout: post
 title: UML Component Diagram 
 ---
 
+Information found on this page gives you a quick look at the definition of software components and the way 
+they can be represented using UML notation.  
 
 ## Software Components
 
