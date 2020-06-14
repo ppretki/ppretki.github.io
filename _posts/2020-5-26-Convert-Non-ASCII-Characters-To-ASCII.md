@@ -34,5 +34,18 @@ and bob's your uncle, here is the expected result
 
 <script src="https://gist.github.com/ppretki/ef62c453ffb8a2e5fe783dfa9b5697b8.js?file=results.out"></script>
 
+## Related topics
+
+1. `io.netty.util.AsciiString`
+
+>
+A string which has been encoded into a character encoding whose character always takes a single byte, similarly to
+ASCII. It internally keeps its content in a byte array unlike {@link String}, which uses a character array, for
+reduced memory footprint and faster data transfer from/to byte-based data structures such as a byte array and
+{@link ByteBuffer}. It is often used in conjunction with {@code Headers} that require a {@link CharSequence}.
+>
+
+
+
 # Source
 1. [lucene-analyzers-common](https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-common)

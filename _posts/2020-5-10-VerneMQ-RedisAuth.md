@@ -1,6 +1,8 @@
 ---
 layout: post
 title: VerneMQ with Redis Auth 
+tags: VerneMQ Redis
+category: MQTT
 ---
 
 Information found on this page allows you to quickly configure MQTT VerneMQ broker
@@ -40,7 +42,7 @@ Using the tool we can provide credentials (previously saved in Redis) and other 
 
 ### Important:
 - **ACL data** for a specific client are read from Redis once - during authentication (MQTT `CONNECT` command), and stay cached until the client disconnects.
-- **ACL pattern** may contains template variables: %m (mountpoint), %u (username), and %c (client id) 
+- **ACL pattern** may contain template variables: %m (mountpoint), %u (username), and %c (client id) 
 
 
 ### Useful commands
