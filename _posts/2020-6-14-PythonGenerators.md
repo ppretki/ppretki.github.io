@@ -6,15 +6,14 @@ tags: python, generators
 
 # Definitions
 
-- Iterator and Iterator Protocol
-- StopIteration Exception
+- Iterator and Iterator Protocol, StopIteration Exception
 - Iterable
 - Iterable containers
 - yield Statement, Generator Function, Generator
 
-## [Iterator and Iterator Protocol](https://docs.python.org/3/glossary.html#term-iterator)
+## Iterator, Iterator Protocol, StopIteration Exception
 
-An object representing a stream of data. An iterator implements two the methods that forms `iterator protocol`:
+[Iterator](https://docs.python.org/3/glossary.html#term-iterator) is an object representing a stream of data. An iterator implements two the methods that forms `iterator protocol`:
 - `__iter__()` - returns the iterator object itself, 
 - `__next__()` - returns the next item from the container.
 
@@ -54,10 +53,10 @@ for number in EvenNumbers(upper_limit=8):
     print(number) # 2, 4, 6, 8, no StopIteration exception is thrown
 ``` 
 
-2. Iterable
+## Iterable
 An iterable is any object that can return an iterator.
 
-3. Iterable containers
+## Iterable containers
 
 Containers are data structures that hold other objects. Containers allow to iterate over 
 objects they contain. Lists, tuples, dictionaries, and sets are all iterable objects. 
@@ -72,7 +71,7 @@ print(next(it)) # = B
 print(next(it)) # = C
 ``` 
 
-4. *yield* Statement
+## yield Statement, Generator Function, Generator
 
 Can only be used in the body of a function definition. It changes function into `generator function`.
 Generator function when called returns `generator`.   
@@ -95,3 +94,8 @@ generator.send("string") # passes the value back to
                 # execution up to the next 'yield' 
                 # statement occurrence  
 ```
+
+# References
+
+- [Iterator](https://docs.python.org/3/glossary.html#term-iterator)
+- [StopIteration](https://docs.python.org/3/library/exceptions.html#StopIteration)
