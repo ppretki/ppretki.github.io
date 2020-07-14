@@ -14,6 +14,12 @@ As a principle, favor DRY in production code, favor DAMP in test code. While bot
 >
 -- [Chris Edwards, What does “DAMP not DRY” mean when talking about unit tests?](https://stackoverflow.com/a/11837973)
 
+
+>
+In tests we can use the DAMP principle (“Descriptive and Meaningful Phrases”), which emphasizes readability over uniqueness. Applying this principle can introduce code redundancy (e.g., by repeating similar code), but it makes tests more obviously correct.
+>
+--[Derek Snyder and Erik Kuefler, Testing on the Toilet: Tests Too DRY? Make Them DAMP!](https://testing.googleblog.com/2019/12/testing-on-toilet-tests-too-dry-make.html)
+
 1. [ddd-by-examples/library](https://github.com/ddd-by-examples/library/blob/master/src/integration-test/groovy/io/pillopl/library/lending/patronprofile/web/PatronProfileControllerIT.java)
 2. [When Code Duplication Is Acceptable](https://hackernoon.com/when-code-duplication-is-acceptable-51ce33ecd0f5)
 3. [Rule of three](https://en.wikipedia.org/wiki/Rule_of_three_(computer_programming))
