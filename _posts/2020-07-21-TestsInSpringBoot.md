@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tests in Spring Boot 2.x 
+title: Tests in SpringBoot 2.x 
 ---
 
 
@@ -41,14 +41,7 @@ Failed tests, if any, are only reported during the verify phase, after the integ
 
 ## Context Caching
 
-## Spring documentation
-
-[Spring doc](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/testing.html#testcontext-ctx-management-caching)
-
-## Source Code
-
-[WebMergedContextConfiguration](https://github.com/spring-projects/spring-framework/blob/27aaad5a892f6bec71316d2fec0871eb5c2b8435/spring-test/src/main/java/org/springframework/test/context/web/WebMergedContextConfiguration.java#L169)
-
-
-
+# References
+1. [Spring Framework docs](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/testing.html#testcontext-ctx-management-caching)
+2. [MergedContextConfiguration](https://github.com/spring-projects/spring-framework/blob/3a0f309e2c9fdbbf7fb2d348be861528177f8555/spring-test/src/main/java/org/springframework/test/context/MergedContextConfiguration.java#L415)
 
