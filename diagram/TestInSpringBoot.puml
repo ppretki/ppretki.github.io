@@ -1,0 +1,7 @@
+@startuml
+
+TestContextManager -> DefaultTestContext: hasApplicationContext
+
+DefaultTestContext -> WebMergedContextConfiguration: hasApplicationContext
+
+@enduml
