@@ -32,14 +32,6 @@ try (val session = sessionFactory.openSession()) {
 address.getStreet(); // <- session is closed
 ```
 
-
-
 ## Dirty Check
+![HibernateDirtyCheck](/images/Hibernate-DirtyCheck.svg)
 
-{% plantuml %}
-@startuml
-Transaction -> TransactionImpl: commit
-TransactionImpl -> DefaultFlushEventListener: onFlush
-DefaultFlushEventListener -> AbstractEntityPersister: findDirty(Object[] currentState, Object[] previousState)
-@enduml
-{% endplantuml %}

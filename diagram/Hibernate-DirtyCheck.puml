@@ -1,0 +1,5 @@
+@startuml
+Transaction -> TransactionImpl: commit
+TransactionImpl -> DefaultFlushEventListener: onFlush
+DefaultFlushEventListener -> AbstractEntityPersister: findDirty(Object[] currentState, Object[] previousState)
+@enduml
