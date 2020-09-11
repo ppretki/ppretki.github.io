@@ -19,9 +19,14 @@ You want your modules to work so that if I need to change part of a system, most
 -- [Strong Module Boundaries, Martin Fowler](https://martinfowler.com/articles/microservice-trade-offs.html)
  
 >
-The code that changes together, stays together.
-We want the functionality grouped in such a way that we can make changes in as few places as possible.
+The code that changes together, stays together. We want the functionality grouped in such a way that we can make changes in as few places as possible.
 Expose as little as possible from a module. Once something becomes part of a module interface, it’s
 hard to walk that back. But if you hide it now, you can always decide to share it later
 >
 -- [Monolith to Microservices](https://www.amazon.com/Monolith-Microservices-Evolutionary-Patterns-Transform/dp/1492047848)
+
+## Modularity and deletion
+>
+To determine if a feature or aspect of a program is modular, just ask yourself this question: How many steps does it take to delete this feature? The fewer the steps, the more modular it is. If it takes only one step to delete a feature (usually by deleting a directory), then you can say that the design has maximum modularity
+>
+-- [Modularity and deletion](http://www.javapractices.com/topic/TopicAction.do?Id=285)
