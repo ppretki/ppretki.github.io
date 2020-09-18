@@ -17,6 +17,12 @@ Modular programming is a software design technique that emphasizes separating th
 You want your modules to work so that if I need to change part of a system, most of the time I only need to understand a small part of that system to make the change, and I can find that small part pretty easily
 >
 -- [Strong Module Boundaries, Martin Fowler](https://martinfowler.com/articles/microservice-trade-offs.html)
+
+
+>
+There are several ways to describe coupling, but it boils down to this: If changing
+one module in a program requires changing another module, then coupling exists.
+-- [Reducing Coupling, Martin Fowler](https://www.martinfowler.com/ieeeSoftware/coupling.pdf)
  
 >
 The code that changes together, stays together. We want the functionality grouped in such a way that we can make changes in as few places as possible.

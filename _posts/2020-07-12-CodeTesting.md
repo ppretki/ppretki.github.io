@@ -1,7 +1,10 @@
 ---
 layout: post
-title: Tests - Code Duplication
+title: Code Testing
 ---
+
+
+# Code Duplication in Tests
 
 >
 Readability matters. Don't try to be overly DRY . Duplication is okay, if it improves readability. Try to find a balance between DRY and DAMP code
@@ -19,6 +22,14 @@ As a principle, favor DRY in production code, favor DAMP in test code. While bot
 In tests we can use the DAMP principle (“Descriptive and Meaningful Phrases”), which emphasizes readability over uniqueness. Applying this principle can introduce code redundancy (e.g., by repeating similar code), but it makes tests more obviously correct.
 >
 --[Derek Snyder and Erik Kuefler, Testing on the Toilet: Tests Too DRY? Make Them DAMP!](https://testing.googleblog.com/2019/12/testing-on-toilet-tests-too-dry-make.html)
+
+
+# Techniques
+
+# Time in Unit Tests
+[Kafka, Time](https://github.com/apache/kafka/blob/fc5f6b0e46ff81302b3e445fed0cdf454c942792/clients/src/main/java/org/apache/kafka/common/utils/Time.java#L23)
+
+
 
 1. [ddd-by-examples/library](https://github.com/ddd-by-examples/library/blob/master/src/integration-test/groovy/io/pillopl/library/lending/patronprofile/web/PatronProfileControllerIT.java)
 2. [When Code Duplication Is Acceptable](https://hackernoon.com/when-code-duplication-is-acceptable-51ce33ecd0f5)

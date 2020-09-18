@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Domain Driven Design: Aggregate
+title: Domain Driven Design - Aggregate
 ---
 
 # Invariants
