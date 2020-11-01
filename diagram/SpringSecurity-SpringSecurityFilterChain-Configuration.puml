@@ -34,7 +34,9 @@ WebSecurityConfigurerAdapter --> HttpSecurity: creates
 HttpSecurity -> DefaultSecurityFilterChain: creates
 
 
-WebSecurity <- WebSecurityConfiguration : configure
+WebSecurityConfiguration --> WebSecurity : configure
 
-WebSecurity -> FilterChainProxy: performBuild
+WebSecurity --> FilterChainProxy: performBuild
+
+FilterChainProxy ---> DefaultSecurityFilterChain: uses
 @enduml
