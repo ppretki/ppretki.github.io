@@ -1,0 +1,17 @@
+@startuml
+title SpringSecurityFilterChain Invocation
+
+participant "<b>StandardWrapperValve</b>\n<<catalina.core.ValveBase>>" as StandardWrapperValve
+participant "<b>ApplicationFilterChain</b>\n<<javax.servlet.FilterChain>>" as ApplicationFilterChain
+participant "<b>DelegatingFilterProxy</b>\n<<org.springframework.web.filter>>" as DelegatingFilterProxy
+participant "<b>WebApplicationContext</b>\n<<spring-web>>" as WebApplicationContext
+participant "<b>SpringSecurityFilterChain</b>\n<<FilterChainProxy>>" as SpringSecurityFilterChain
+
+StandardWrapperValve -> ApplicationFilterChain: doFilter(request, response)
+ApplicationFilterChain -> DelegatingFilterProxy: doFilter(request, response, filterChain)
+
+DelegatingFilterProxy -> WebApplicationContext: getBean("springSecurityFilterChain")
+WebApplicationContext --> DelegatingFilterProxy: SpringSecurityFilterChain
+DelegatingFilterProxy -> SpringSecurityFilterChain: doFilter(request, response, filterChain)
+
+@enduml

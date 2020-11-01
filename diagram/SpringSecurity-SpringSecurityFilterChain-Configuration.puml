@@ -1,0 +1,40 @@
+@startuml
+title SpringSecurityFilterChain Configuration
+
+class HttpSecurity {
+    performBuild()
+}
+
+class WebSecurityConfigurerAdapter {
+    HttpSecurity http
+}
+
+class WebSecurityConfiguration {
+    List<WebSecurityConfigurerAdapter> webSecurityConfigurers
+}
+
+class WebSecurity {
+    List<HttpSecurity> securityFilterChainBuilders
+}
+
+class FilterChainProxy {
+    List<SecurityFilterChain> filterChains
+}
+note right: SpringSecurityFilterChain
+
+class DefaultSecurityFilterChain {
+    RequestMatcher requestMatcher
+    List<Filter> filters
+}
+
+WebSecurityConfiguration --> WebSecurityConfigurerAdapter: contains
+
+WebSecurityConfigurerAdapter --> HttpSecurity: creates
+
+HttpSecurity -> DefaultSecurityFilterChain: creates
+
+
+WebSecurity <- WebSecurityConfiguration : configure
+
+WebSecurity -> FilterChainProxy: performBuild
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+title Integration with Embedded Tomcat
+participant "<b>TomcatStarter</b>" as TomcatStarter
+participant "<b>DelegatingFilterProxyRegistrationBean</b>\n<<ServletContextInitializer>>" as RegistrationBean
+participant "<b>ServletContext</b>\n<<javax.servlet>>" as ServletContext
+
+TomcatStarter -> RegistrationBean: onStartup(servletContext)
+RegistrationBean -> RegistrationBean: create filter = DelegatingFilterProxy("springSecurityFilterChain")
+RegistrationBean -> ServletContext: addFilter("springSecurityFilterChain", filter)
+RegistrationBean -> ServletContext: addMappingForUrlPatterns(ASYNC_DISPATCHER_TYPES,"/*")
+@enduml

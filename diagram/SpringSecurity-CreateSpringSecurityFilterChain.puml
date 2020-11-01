@@ -1,0 +1,23 @@
+@startuml
+title Creation of SpringSecurityFilterChain
+participant "<b>WebApplicationContext</b>\n<<spring-web>>" as WebApplicationContext
+participant "<b>WebSecurityConfiguration</b>\n<<spring-security-config>>" as WebSecurityConfiguration
+participant "<b>WebSecurity</b>\n<<spring-security-config>>" as WebSecurity
+
+WebApplicationContext -> WebSecurityConfiguration: setFilterChainProxySecurityConfigurer(webSecurityConfigurers)
+note right: e.g. WebSecurityConfigurerAdapter
+
+WebSecurityConfiguration -> WebSecurityConfiguration: create WebSecurity
+
+WebSecurityConfiguration -> WebSecurity: addAll(webSecurityConfigurers)
+
+WebApplicationContext -> WebSecurityConfiguration: springSecurityFilterChain
+
+WebSecurityConfiguration-> WebSecurity: build
+
+WebSecurity --> WebSecurityConfiguration: FilterChainProxy
+
+WebSecurityConfiguration --> WebApplicationContext: FilterChainProxy
+note left: Spring Bean "springSecurityFilterChain" can be found by \n DelegatingFilterProxyRegistrationBean i.e \nwac.getBean(getTargetBeanName(), Filter.class);
+
+@enduml
