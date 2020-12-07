@@ -1,5 +1,6 @@
 ---
-layout: post title: Software Modularization
+layout: post 
+title: Software Modularization
 ---
 
 # Modularization
@@ -64,9 +65,9 @@ feature (usually by deleting a directory), then you can say that the design has 
 >
 Development time should be shortened because separate groups can work on each module (microservice) with little need for
 communication
-
+>
 Product flexibility — it is possible to make quite drastic changes or improvements in one module without changing others
-
+>
 Comprehensibility - system could be studied a module at a time with the result that the whole 
 system could be better designed because it was better understood
 >
