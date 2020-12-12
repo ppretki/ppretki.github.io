@@ -85,3 +85,38 @@ for (int i = 0; i < 215000; i++) {
 
 ![system anaysis](/images/system_analysis_1_5_core_second.png)
 
+
+
+| Statistics | value     |
+|------------| ----------|
+|count       |31.000000  |
+|mean        |17.084434  |
+|std         |7.145549   |
+|min         |1.959396   |
+|25%         |13.926061  |
+|50%         |17.469664  |
+|75%         |22.194074  |
+|max         |28.126784  |
+
+
+### Results
+
+![system anaysis](/images/system_analysis_0_1_core_second_1_req_per_sec.png)
+
+![system anaysis](/images/system_analysis_0_1_core_second_2_req_per_sec.png)
+
+![system anaysis](/images/system_analysis_0_1_core_second_3_req_per_sec.png)
+
+![system anaysis](/images/system_analysis_0_1_core_second_4_req_per_sec.png)
+
+
+| Statistics | 1 req/sec  | 2 req/sec  | 3 req/sec  | 4 req/sec  |
+|------------| ---------- |------------| ---------- | ---------- |
+| count      | 60         | 120        | 180        | 240        |
+| mean       | 0.112834   | 0.206435   | 0.289398   | 0.386657   |
+| std        | 0.003391   | 0.003080   | 0.025654   | 0.041633   |
+| min        | 0.105224   | 0.197656   | 0.220377   | 0.249809   |
+| 25%        | 0.110350   | 0.204262   | 0.269366   | 0.363282   |
+| 50%        | 0.112564   | 0.206319   | 0.295571   | 0.402370   |
+| 75%        | 0.114275   | 0.208764   | 0.310146   | 0.418204   |
+| max        | 0.124137   | 0.216351   | 0.328630   | 0.451016   |
